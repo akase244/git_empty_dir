@@ -129,6 +129,7 @@ if (!$mode) {
 echo 'mode: ' . $mode . PHP_EOL;
 echo 'target directory: ' . $directory . PHP_EOL;
 echo 'keeper file name: ' . $keeper . PHP_EOL;
+echo PHP_EOL;
 
 if (!file_exists($directory . '/.git')) {
     echo $directory . ' is not git managed directory' . PHP_EOL;
@@ -146,7 +147,10 @@ while ($iterator->valid()) {
     if ($iterator->isDir() && $iterator->getPathname() != $directory . '/.git') {
         switch ($mode) {
             case 'list':
-                echo $iterator->getPathname() . PHP_EOL;
+                // is empty dir
+                if (count(scandir($iterator->getPathname())) == 2) {
+                    echo 'target: ' . $iterator->getPathname() . PHP_EOL;
+                }
                 break;
             case 'add':
                 // is empty dir
