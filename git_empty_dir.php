@@ -114,7 +114,7 @@ foreach ($args as $index => $option) {
         $suboption = $options[1];
         if ($suboption) {
             if ($specifyKeeper) {
-                echo 'directory duplicated.' . PHP_EOL;
+                echo 'keeper duplicated.' . PHP_EOL;
                 exit;
             }
             $keeper = $suboption;
